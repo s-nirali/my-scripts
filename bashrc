@@ -77,15 +77,12 @@ cta ()
 getpass ()
 {
   # About: Used to generate passwords for any application.
-  # Usage: The function generates a string of default length 15 chars which may
-  # be overridden by passing the length as parameter.
-
-  # For Linux, uncomment the following line
-  # </dev/urandom tr -dc '[[:print:]]' | head -c "${1:-15}" ; echo
+  # Usage: The function generates a string of default length 15 chars. Set the
+  # first argument to override the default length of 15 chars and second
+  # argument to override the default number of passwords generated.
 
   # For OSX, tr complains of 'Illegal byte sequence' if LC_ALL=C is not used
-  LC_ALL=C </dev/urandom tr -dc '[:print:]' | head -c "${1:-15}" ; echo
-
+  LC_ALL=C </dev/urandom tr -dc '[:print:]' | fold -w "${1:-15}" | head -n "${2:-1}"
 }
 ## Generate a string of random characters and copy to clipboard
 getpassp ()
