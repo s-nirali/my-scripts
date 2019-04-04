@@ -56,7 +56,8 @@ get_git_br ()
 }
 
 ## Set Volume
-vo () {
+vo ()
+{
   # First argument is an integer for the output volume level
   osascript -e "set volume output volume $1"
 }
@@ -134,6 +135,9 @@ alias ll='ls -lAG' # for OSX
 # Install shellcheck(https://github.com/koalaman/shellcheck) with brew
 alias shellcheck='shellcheck -axs bash'
 
+# Clean up .DS_Store files in MacOS
+alias rmDS='sudo find . -name ".DS_Store" -depth -exec rm {} \;'
+
 ### ---Bash variables---
 
 ## Set bash prompt
@@ -149,3 +153,9 @@ export HISTFILESIZE=1000
 export PYTHONDONTWRITEBYTECODE=1
 
 export GO111MODULE=on
+
+### ---Extras---
+
+# Enable bash completion on MacOS
+# $ brew install bash-completion
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
